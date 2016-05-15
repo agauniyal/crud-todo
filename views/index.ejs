@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang=en>
+
+<head>
+    <meta charset=utf-8>
+    <meta name=viewport content='width=device-width, initial-scale=1'>
+    <title>Todos are great</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300|Gloria+Hallelujah' rel='stylesheet' type='text/css'>
+    <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css' rel=stylesheet type=text/css>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css' rel=stylesheet type=text/css>
+    <style>
+    *,
+    *:before,
+    *:after {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    
+    html,
+    body {
+        font-family: 'Open Sans', sans-serif;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .container {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        -webkit-align-items: stretch;
+        align-items: stretch;
+        height: 100%;
+    }
+    
+    #big-number {
+        width: 35%;
+        background: #444853 url(https://unsplash.imgix.net/photo-1423683249427-8ca22bd873e0?fit=crop&fm=jpg&h=700&q=75&w=1050)0 0 no-repeat;
+        background-size: cover;
+    }
+    
+    #big-number:after {
+        font-size: 11em;
+        color: #FFE200;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(40, 40, 40, 0.90);
+        height: 100%;
+        width: 100%;
+        content: attr(data-value);
+    }
+    
+    #todo-app {
+        width: 65%;
+        height: 100%;
+    }
+    
+    #app-container {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+        -webkit-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        -webkit-align-items: stretch;
+        align-items: stretch;
+        height: 100%;
+        padding: 30px;
+    }
+    
+    #header {
+        padding: 10px;
+        text-align: center;
+        font-weight: 300;
+        font-size: 3em;
+        color: #444;
+        height: 20%;
+    }
+    
+    # #todo-box {
+        height: 20%;
+    }
+    
+    #todo-box form {
+        width: 100%;
+        height: 100%;
+        margin: 50px 0;
+    }
+    
+    #todo-box form input[type='text'] {
+        display: inline-block;
+        margin: 0;
+        width: 100%;
+        appearance: none;
+        box-shadow: none;
+        border-radius: none;
+        font-size: 1.2em;
+        font-weight: 300;
+        padding: 10px;
+    }
+    
+    #todo-list {
+        height: 80%;
+        overflow: scroll;
+        font-size: 1.3em;
+        color: #666;
+    }
+    
+    #todo-item {
+        padding: 5px 0;
+        font-family: 'Gloria Hallelujah', cursive;
+    }
+    </style>
+</head>
+
+<body>
+    <div class='container'>
+        <div id='big-number'></div>
+        <div id='todo-app'>
+            <div id='app-container'>
+                <div id='header'><i class='fa fa-calendar-o' aria-hidden='true' style='padding-right:15px; font-size:1.5em;'></i>CRUD-TODO</div>
+                <div id='todo-box'>
+                    <form action='/todos' method='POST'>
+                        <input name='status' id='ts' type='checkbox' style='display:none'>
+                        <input name='todo' id='td' type='text' autofocus placeholder='Type your task here...'>
+                        <button type='submit' style='display:none'>Submit</button>
+                    </form>
+                </div>
+                <div id='todo-list'>
+                    <% for(var i=0; i<todos.length; i++) {%>
+                        <div id='todo-item'>
+                            <input name='show-status' id='ts' type='checkbox' <% if (todos[i].status=='on' ) { %> checked='true'
+                            <% } %>>
+                                <span id='todo-text'><%= todos[i].todo %></span>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+        </div>
+        <script type='text/javascript'>
+        var bgNum = document.getElementById('big-number');
+        var count = document.getElementById('todo-list').children.length;
+        bgNum.setAttribute('data-value', count);
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+{
+  "name": "crud-todo",
+  "version": "0.0.1",
+  "description": "expressjs and sample crud todo app - practice",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agauniyal/crud-todo.git"
+  },
+  "keywords": [
+    "express",
+    "expressjs",
+    "node",
+    "nodejs",
+    "mongodb",
+    "crud",
+    "todo"
+  ],
+  "author": "Abhinav Gauniyal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/agauniyal/crud-todo/issues"
+  },
+  "homepage": "https://github.com/agauniyal/crud-todo#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "mongodb": "^2.1.18"
+  }
+}
